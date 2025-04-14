@@ -5,62 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AstroConnect - Chatbox</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    :root {
+      --primary: #f4c430;
+      --bg-dark: #1e1e2f;
+      --bg-light: #2e2e40;
+      --text-light: #fff;
+      --bot-text: #aaa;
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #2a1a47, #6a2c8d);
-      color: #fff;
+      color: var(--text-light);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      padding: 1rem;
     }
 
     .chat-container {
-      background-color: #1e1e2f;
+      background-color: var(--bg-dark);
       padding: 1.5rem;
       border-radius: 1rem;
-      width: 90%;
+      width: 100%;
       max-width: 500px;
       box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+      display: flex;
+      flex-direction: column;
     }
 
     h2 {
       text-align: center;
-      color: #f4c430;
+      color: var(--primary);
       margin-bottom: 1rem;
     }
 
     #chat-output {
-      background-color: #2e2e40;
+      background-color: var(--bg-light);
       padding: 1rem;
       height: 250px;
       overflow-y: auto;
       border-radius: 0.5rem;
       margin-bottom: 1rem;
       border: 1px solid #444;
+      font-size: 1rem;
     }
 
     .chat-line {
       margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
 
     .user {
-      color: #f4c430;
+      color: var(--primary);
     }
 
     .bot {
-      color: #aaa;
+      color: var(--bot-text);
     }
 
     .chat-input-area {
       display: flex;
       gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     #chat-input {
-      flex: 1;
+      flex: 1 1 70%;
       padding: 0.6rem;
       border-radius: 5px;
       border: none;
@@ -68,8 +86,9 @@
     }
 
     button {
-      padding: 0.6rem 1rem;
-      background: #f4c430;
+      flex: 1 1 25%;
+      padding: 0.6rem;
+      background: var(--primary);
       color: #000;
       border: none;
       border-radius: 5px;
@@ -79,6 +98,22 @@
 
     button:hover {
       background-color: #ffd700;
+    }
+
+    @media (max-width: 600px) {
+      .chat-container {
+        padding: 1rem;
+        border-radius: 0.75rem;
+      }
+
+      #chat-output {
+        height: 200px;
+        font-size: 0.95rem;
+      }
+
+      #chat-input, button {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
@@ -109,7 +144,6 @@
       const message = input.value.trim();
       if (message === "") return;
 
-      
       const userMessage = document.createElement("div");
       userMessage.className = "chat-line user";
       userMessage.textContent = "You: " + message;
@@ -118,11 +152,10 @@
       input.value = "";
       chatOutput.scrollTop = chatOutput.scrollHeight;
 
-      
       setTimeout(() => {
         const botReply = document.createElement("div");
         botReply.className = "chat-line bot";
-        botReply.textContent = "AstroBot: Thanks for your question! We’ll get back soon 🌟";
+        botReply.textContent = "AstroBot: Thanks for your question! 🌟";
         chatOutput.appendChild(botReply);
         chatOutput.scrollTop = chatOutput.scrollHeight;
       }, 600);
