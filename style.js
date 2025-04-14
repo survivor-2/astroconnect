@@ -1,10 +1,9 @@
-// Save selected astrologer in localStorage
 function selectAstrologer(name) {
     localStorage.setItem("selectedAstrologer", name);
     alert(`Selected ${name}`);
   }
   
-  // Confirm booking
+  
   function confirmBooking(event) {
     event.preventDefault();
     const name = document.getElementById("userName").value;
@@ -15,7 +14,6 @@ function selectAstrologer(name) {
     alert(`Booking confirmed with ${astrologer} on ${date} at ${time}. Thank you, ${name}!`);
   }
   
-  // Simple AI chatbot
   function chatBot() {
     const input = document.getElementById("userInput");
     const chatbox = document.getElementById("chatbox");
