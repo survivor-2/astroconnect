@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Appointment Details</h2>
+    <form onsubmit="confirmBooking(event)">
+      <input type="text" id="userName" placeholder="Your Full Name" required>
+      <input type="email" id="userEmail" placeholder="Your Email" required>
+      <input type="date" id="date" required>
+      <input type="time" id="time" required>
+      <textarea placeholder="Any specific concerns?" rows="4"></textarea>
+      <button type="submit">Book Now</button>
+    </form>
+    <a href="chatbot.html">Need help? Talk to AI</a>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
