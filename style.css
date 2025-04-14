@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e2a38, #2e3f52);
+    background: linear-gradient(to right, #2a1a47, #6a2c8d); 
     color: #fff;
     display: flex;
     justify-content: center;
@@ -10,46 +10,64 @@ body {
     min-height: 100vh;
   }
   
-  
+ 
   .container {
-    background-color: #243447;
+    background-color: rgba(50, 50, 50, 0.8); 
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
-    max-width: 400px;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
     width: 90%;
+    max-width: 600px;
     text-align: center;
   }
   
-  
-  h1 {
+  h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
     color: #f4c430;
+    margin-bottom: 1.5rem;
   }
   
   
-  input {
-    width: 100%;
-    padding: 0.75rem;
+  .astrologer-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  
+  .card {
+    background-color: #3b4a5a; 
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3); 
+  }
+  
+  
+  .astrologer-name h3 {
+    font-size: 1.4rem;
+    color: #f4c430;
     margin: 0.5rem 0;
-    border: none;
-    border-radius: 0.5rem;
-    background: #3b4a5a;
-    color: #fff;
+  }
+  
+  
+  .astrologer-expertise p {
     font-size: 1rem;
+    color: #ddd;
   }
   
-  input::placeholder {
-    color: #bbb;
-  }
-  
-  
+ 
   button {
     width: 100%;
-    padding: 0.75rem;
-    margin-top: 1rem;
-    background: linear-gradient(to right, #f4c430, #e3a900);
+    padding: 1rem;
+    margin-top: 2rem;
+    background: linear-gradient(to right, #f4c430, #e3a900); 
     color: #000;
     font-weight: bold;
     border: none;
@@ -62,33 +80,26 @@ body {
     background: linear-gradient(to right, #ffd700, #f4a100);
   }
   
-
-  p {
-    margin-top: 1rem;
-  }
-  
   a {
-    color: #f4c430;
     text-decoration: none;
-    font-weight: bold;
   }
   
-  a:hover {
-    text-decoration: underline;
-  }
   
- 
   @media (max-width: 600px) {
     .container {
       padding: 1.5rem;
     }
   
-    h1 {
+    h2 {
       font-size: 1.6rem;
     }
   
-    input, button {
-      font-size: 0.95rem;
+    .card {
+      padding: 1rem;
+    }
+  
+    button {
+      padding: 1rem;
     }
   }
   
