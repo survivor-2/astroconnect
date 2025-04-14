@@ -1,258 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>AstroConnect - Astrologer Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { margin: 0; padding: 0; background: #f3f4f6; }
-    header {
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      padding: 30px 20px;
-      color: white;
-      text-align: center;
-    }
-    h1 { margin: 0; }
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-
-    /* Login */
-    .login-box {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 400px;
-      margin: 0 auto 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .login-box h2 {
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .login-box input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    .login-box button {
-      background: #6a11cb;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .astrologer-list, .form-box {
-      margin-top: 30px;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .astrologers {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .astrologer {
-      border: 2px solid transparent;
-      border-radius: 12px;
-      width: 180px;
-      text-align: center;
-      padding: 10px;
-      background: #f9fafb;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .astrologer:hover,
-    .astrologer.selected {
-      border-color: #6a11cb;
-    }
-    .astrologer img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    /* Form */
-    .form-box input,
-    .form-box select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    /* Chatbox */
-    .chatbox {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 320px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background: #6a11cb;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-
-    .chat-body {
-      height: 200px;
-      padding: 10px;
-      overflow-y: auto;
-      font-size: 0.9rem;
-    }
-
-    .chat-input {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid #ccc;
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-right: 8px;
-    }
-
-    .chat-input button {
-      background: #6a11cb;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>AstroConnect - Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <h1>AstroConnect</h1>
-    <p>Login, Choose Your Astrologer & Ask Anything!</p>
-  </header>
-
   <div class="container">
+    <h1>AstroConnect</h1>
+    
+    <!-- Login Form -->
+    <form action="astrologer.html">
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    
+    <p>New here? <a href="#" onclick="toggleSignup()">Create an account</a></p>
 
-    <!-- Login Section -->
-    <div class="login-box">
-      <h2>User Login</h2>
-      <input type="email" placeholder="Enter Email" id="email" required />
-      <input type="password" placeholder="Enter Password" id="password" required />
-      <button onclick="login()">Login</button>
-    </div>
-
-    <!-- Astrologer List -->
-    <div class="astrologer-list">
-      <h2>Select an Astrologer</h2>
-      <div class="astrologers">
-        <div class="astrologer" onclick="selectAstro(this, 'Riya Sharma')">
-          <img src="https://via.placeholder.com/180x120?text=Riya" alt="Riya">
-          <p>Riya Sharma</p>
-        </div>
-        <div class="astrologer" onclick="selectAstro(this, 'Aryan Mehta')">
-          <img src="https://via.placeholder.com/180x120?text=Aryan" alt="Aryan">
-          <p>Aryan Mehta</p>
-        </div>
-        <div class="astrologer" onclick="selectAstro(this, 'Tara Singh')">
-          <img src="https://via.placeholder.com/180x120?text=Tara" alt="Tara">
-          <p>Tara Singh</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Details Form -->
-    <div class="form-box">
-      <h2>Fill Appointment Details</h2>
-      <input type="text" id="username" placeholder="Your Full Name" required />
-      <input type="date" id="date" required />
-      <input type="time" id="time" required />
-      <input type="text" id="selectedAstrologer" placeholder="Astrologer Name" readonly />
-      <button onclick="bookAppointment()">Book Appointment</button>
-    </div>
-
-  </div>
-
-  <!-- Chatbox -->
-  <div class="chatbox" id="chatBox">
-    <div class="chat-header">Ask Astro AI 💬</div>
-    <div class="chat-body" id="chatBody">
-      <p><strong>AI:</strong> Hello! Ask me anything about astrology, bookings, or app help!</p>
-    </div>
-    <div class="chat-input">
-      <input type="text" id="userMessage" placeholder="Type your question..." />
-      <button onclick="sendMessage()">Send</button>
-    </div>
+    <!-- Signup Form (Initially Hidden) -->
+    <form id="signupForm" style="display: none;" onsubmit="signUp(event)">
+      <h3>Sign Up</h3>
+      <input type="text" placeholder="New Username" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Register</button>
+    </form>
   </div>
 
   <script>
-    let selectedName = "";
-
-    function login() {
-      const email = document.getElementById("email").value;
-      const pass = document.getElementById("password").value;
-      alert(`Logged in as ${email}`);
-      // In real app, send data to backend
+    function toggleSignup() {
+      const signupForm = document.getElementById("signupForm");
+      signupForm.style.display = signupForm.style.display === "none" ? "block" : "none";
     }
 
-    function selectAstro(card, name) {
-      document.querySelectorAll('.astrologer').forEach(el => el.classList.remove('selected'));
-      card.classList.add('selected');
-      document.getElementById("selectedAstrologer").value = name;
-      selectedName = name;
-    }
-
-    function bookAppointment() {
-      const user = document.getElementById("username").value;
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      if (!selectedName) {
-        alert("Please select an astrologer first.");
-        return;
-      }
-      alert(`Appointment booked with ${selectedName} on ${date} at ${time}.`);
-    }
-
-    function sendMessage() {
-      const input = document.getElementById("userMessage");
-      const chat = document.getElementById("chatBody");
-      const message = input.value.trim();
-      if (!message) return;
-
-      chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-
-      // Fake AI reply (You can integrate OpenAI / custom backend here)
-      setTimeout(() => {
-        chat.innerHTML += `<p><strong>AI:</strong> Thank you for asking! Our team will assist you soon.</p>`;
-        chat.scrollTop = chat.scrollHeight;
-      }, 1000);
-
-      input.value = "";
+    function signUp(event) {
+      event.preventDefault();
+      alert("Signup successful! You can now log in.");
+      document.getElementById("signupForm").reset();
+      document.getElementById("signupForm").style.display = "none";
     }
   </script>
-
 </body>
 </html>
